@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import io.qameta.allure.Description;
 
-public class Test01 extends BaseTest{
+public class Test02 extends BaseTest{
 	SagarGenericLib reFunc = new SagarGenericLib();
 //	TestData datafactory;
 	

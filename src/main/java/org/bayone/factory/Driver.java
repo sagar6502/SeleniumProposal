@@ -34,11 +34,7 @@ public class Driver {
 				options.addArguments("--high-dpi-support=1", "--force-device-scale-factor=1.5");
 				options.addArguments("--window-size=1920,1080");
 				options.addArguments("--start-maximized");
-				 // Set the default URL to open
-		        options.addArguments(readProperties().getProperty("URL"));
-				//options.addArguments("--incognito");
-				//options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-				//options.setExperimentalOption("networkConnectionEnabled", false);
+				options.addArguments("--incognito");
 				if(readProperties().getProperty("Headless").equalsIgnoreCase("false"))
 					options.addArguments("--headless");
 				driver = new ChromeDriver(options);
@@ -53,6 +49,7 @@ public class Driver {
 		driver.manage().deleteAllCookies();
 		return driver;
 	}
+	
 	//reading properties file
 	public Properties readProperties() throws IOException {
 		Properties properties = new Properties();
@@ -60,4 +57,11 @@ public class Driver {
 	    properties.load(input);
 	    return properties;
 	}
+	
+	public void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null; // Reset driver instance
+        }
+    }
 }
